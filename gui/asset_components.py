@@ -96,7 +96,7 @@ class AssetComponentsUtils:
                     value=default_voice,
                     interactive=True,
                 )
-        return cls.instance_voiceChoice[provider]
+        return cls.instance_voiceChoice.get(provider)
 
     @classmethod
     def voiceChoiceTranslation(cls, provider: str = None):
@@ -113,4 +113,4 @@ class AssetComponentsUtils:
                     value=default_voice,
                     interactive=True,
                 )
-        return cls.instance_voiceChoiceTranslation[provider]
+        return cls.instance_voiceChoiceTranslation.get(provider)

@@ -58,7 +58,7 @@ class ShortAutomationUI(AbstractComponentUI):
                 video_folder = gr.Button("📁", visible=True)
                 output = gr.HTML('<div style="min-height: 80px;"></div>')
 
-            video_folder.click(lambda _: AssetComponentsUtils.start_file(os.path.abspath("videos/")))
+            video_folder.click(lambda: AssetComponentsUtils.start_file(os.path.abspath("videos/")))
 
             createButton.click(self.inspect_create_inputs, inputs=[AssetComponentsUtils.background_video_checkbox(), AssetComponentsUtils.background_music_checkbox(), watermark, short_type, facts_subject], outputs=[generation_error]).success(self.create_short, inputs=[
                 numShorts,

@@ -194,7 +194,7 @@ class VideoAutomationUI(AbstractComponentUI):
                 self.msg = gr.Textbox()
                 self.restart_button = gr.Button("Restart")
                 self.video_folder = gr.Button("📁", visible=False)
-                self.video_folder.click(lambda _: AssetComponentsUtils.start_file(os.path.abspath("videos/")))
+                self.video_folder.click(lambda: AssetComponentsUtils.start_file(os.path.abspath("videos/")))
                 respond = self.chatbot_conversation()
 
             self.errorHTML = gr.HTML(visible=False)

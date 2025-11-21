@@ -96,6 +96,6 @@ class ConfigUI(AbstractComponentUI):
                     save_button = gr.Button("save", size="sm", scale=1)
                     save_button.click(self.verify_eleven_key, [eleven_labs_textbox, eleven_characters_remaining], [eleven_characters_remaining]).success(
                         self.save_keys, [openai_textbox, eleven_labs_textbox, pexels_textbox, gemini_textbox], [openai_textbox, eleven_labs_textbox, pexels_textbox, gemini_textbox, AssetComponentsUtils.voiceChoice(), AssetComponentsUtils.voiceChoiceTranslation()])
-                    save_button.click(lambda _: gr.update(value="Keys Saved !"), [], [save_button])
+                    save_button.click(lambda: gr.update(value="Keys Saved !"), [], [save_button])
                     save_button.click(self.back_to_normal, [], [save_button])
         return config_ui
