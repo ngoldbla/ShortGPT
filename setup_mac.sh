@@ -74,11 +74,17 @@ if [ ! -f ".env" ]; then
     else
         cat > .env << 'EOF'
 # ShortGPT API Keys Configuration
-# Get your API keys from the respective services:
+#
+# REQUIRED - At least ONE of these AI API keys (Gemini is FREE and recommended):
 # - Gemini: https://makersuite.google.com/app/apikey (FREE - recommended)
-# - OpenAI: https://platform.openai.com/api-keys
-# - ElevenLabs: https://elevenlabs.io/ (optional for voice synthesis)
-# - Pexels: https://www.pexels.com/api/ (FREE for stock footage)
+# - OpenAI: https://platform.openai.com/api-keys (Paid)
+#
+# OPTIONAL - The app will work without these:
+# - ElevenLabs: https://elevenlabs.io/ (for high-quality voice synthesis - can use free EdgeTTS instead)
+# - Pexels: https://www.pexels.com/api/ (FREE - for stock footage)
+#
+# NOTE: Replace the placeholder values below with your actual API keys
+# You can leave optional keys as-is if you don't need them
 
 GEMINI_API_KEY=your_gemini_api_key_here
 OPENAI_API_KEY=your_openai_api_key_here
@@ -88,8 +94,9 @@ EOF
         echo "✅ Created .env file template"
     fi
     echo ""
-    echo "⚠️  IMPORTANT: Edit the .env file and add your API keys before running!"
+    echo "⚠️  IMPORTANT: Edit the .env file and add at least ONE AI API key (Gemini or OpenAI) before running!"
     echo "   You can edit it with: nano .env"
+    echo "   Gemini is FREE and recommended: https://makersuite.google.com/app/apikey"
 else
     echo "✅ .env file already exists"
 fi
@@ -98,7 +105,9 @@ echo ""
 echo "🎉 Setup complete!"
 echo ""
 echo "To run ShortGPT:"
-echo "1. Make sure you've added your API keys to the .env file"
+echo "1. Make sure you've added at least ONE AI API key (Gemini or OpenAI) to the .env file"
+echo "   - Get a FREE Gemini key: https://makersuite.google.com/app/apikey"
+echo "   - ElevenLabs is optional - you can use free EdgeTTS for voice synthesis"
 echo "2. Run: ./run_mac.sh"
 echo ""
 echo "Or manually:"
