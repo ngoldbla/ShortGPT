@@ -30,7 +30,7 @@ class VideoTranslationUI(AbstractComponentUI):
             with gr.Column():
                 videoType = gr.Radio(["Youtube link", "Video file"], label="Input your video", value="Youtube link", interactive=True)
                 video_path = gr.Video(sources="upload", interactive=True, width=533.33, height=300, visible=False)
-                yt_link = gr.Textbox(label="Youtube link (https://youtube.com/xyz): ", interactive=True, visible=False)
+                yt_link = gr.Textbox(label="Youtube link (https://youtube.com/xyz): ", interactive=True, visible=True)
                 videoType.change(lambda x: (gr.update(visible=x == "Video file"), gr.update(visible=x == "Youtube link")), [videoType], [video_path, yt_link])
                 tts_engine = gr.Radio([AssetComponentsUtils.ELEVEN_TTS, AssetComponentsUtils.EDGE_TTS], label="Text to speech engine", value=AssetComponentsUtils.EDGE_TTS, interactive=True)
                 with gr.Column(visible=False) as eleven_tts:

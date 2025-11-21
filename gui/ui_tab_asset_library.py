@@ -51,10 +51,10 @@ class AssetLibrary(AbstractComponentUI):
                         asset_dataframe_ui.select(self.__preview_asset, [asset_dataframe_ui], [asset_preview_ui, delete_button])
 
                 add_youtube_link.click(
-                    self.__verify_youtube_asset_inputs, [asset_name, youtube_url, asset_type], []).success(self.__add_youtube_asset, [asset_name, youtube_url, asset_type], [asset_dataframe_ui, asset_preview_ui, delete_button, accordion, AssetComponentsUtils.background_video_checkbox(), AssetComponentsUtils.background_music_checkbox()]).success(lambda: gr.update(open=False), [accordion])
+                    self.__verify_youtube_asset_inputs, [asset_name, youtube_url, asset_type], []).success(self.__add_youtube_asset, [asset_name, youtube_url, asset_type], [asset_dataframe_ui, asset_preview_ui, delete_button, accordion, AssetComponentsUtils.background_video_checkbox(), AssetComponentsUtils.background_music_checkbox()]).success(lambda x: gr.update(open=False), [accordion])
 
                 upload_button.click(
-                    self.__verify_and_upload_local_asset, [upload_type, local_upload_name, video_upload, audio_upload, image_upload, ], []).success(self.__upload_local_asset, [upload_type, local_upload_name, video_upload, audio_upload, image_upload, ], [asset_dataframe_ui, asset_preview_ui, delete_button, accordion, AssetComponentsUtils.background_video_checkbox(), AssetComponentsUtils.background_music_checkbox()]).success(lambda: gr.update(open=False), [accordion])
+                    self.__verify_and_upload_local_asset, [upload_type, local_upload_name, video_upload, audio_upload, image_upload, ], []).success(self.__upload_local_asset, [upload_type, local_upload_name, video_upload, audio_upload, image_upload, ], [asset_dataframe_ui, asset_preview_ui, delete_button, accordion, AssetComponentsUtils.background_video_checkbox(), AssetComponentsUtils.background_music_checkbox()]).success(lambda x: gr.update(open=False), [accordion])
 
         return asset_library_ui
 
