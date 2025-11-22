@@ -34,7 +34,31 @@ class ShortGptUI(AbstractBaseUI):
                     print("\n\n********************* STARTING SHORGPT **********************")
                     print("\nShortGPT is running here 👉 http://localhost:31415\n")
                     print("********************* STARTING SHORGPT **********************\n\n")
-        shortGptUI.queue().launch(server_port=31415, height=1000, allowed_paths=["public/","videos/","fonts/"], share=self.colab, server_name="0.0.0.0")
+
+        # Launch with improved Mac compatibility settings
+        try:
+            shortGptUI.queue().launch(
+                server_port=31415,
+                height=1000,
+                allowed_paths=["public/", "videos/", "fonts/"],
+                share=self.colab,
+                server_name="0.0.0.0",
+                show_error=True,
+                quiet=False
+            )
+        except Exception as e:
+            print(f"\n❌ Error launching Gradio interface: {e}")
+            print("\nTrying alternative launch configuration...")
+            # Fallback: try with localhost only
+            shortGptUI.queue().launch(
+                server_port=31415,
+                height=1000,
+                allowed_paths=["public/", "videos/", "fonts/"],
+                share=self.colab,
+                server_name="127.0.0.1",
+                show_error=True,
+                quiet=False
+            )
 
 
 
