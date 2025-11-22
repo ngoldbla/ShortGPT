@@ -120,7 +120,34 @@ If you prefer to set things up manually:
 
 Note: If you don't provide an ElevenLabs key, ShortGPT will use Microsoft's free EdgeTTS for voice synthesis.
 
+## Compatibility Fixes
+
+ShortGPT includes automatic fixes for known Mac compatibility issues:
+
+- **Gradio-Pydantic compatibility** - Prevents the "TypeError: argument of type 'bool' is not iterable" error
+- **Automatic schema patching** - Runtime patches for Gradio component schemas
+- **Pydantic version pinning** - Ensures compatible dependency versions
+
+These fixes are applied automatically during setup and runtime. For detailed information, see [MAC_COMPATIBILITY_FIXES.md](MAC_COMPATIBILITY_FIXES.md).
+
 ## Troubleshooting
+
+### "TypeError: argument of type 'bool' is not iterable"
+This is a known Gradio-Pydantic compatibility issue. The fix is included automatically, but if you see this error:
+
+1. Ensure you're using the correct Pydantic version:
+   ```bash
+   source venv/bin/activate
+   pip install "pydantic>=2.0.0,<2.11.0" --force-reinstall
+   ```
+
+2. Clear Python cache and restart:
+   ```bash
+   find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+   ./run_mac.sh
+   ```
+
+See [MAC_COMPATIBILITY_FIXES.md](MAC_COMPATIBILITY_FIXES.md) for more details.
 
 ### Python version issues
 If you have multiple Python versions installed, you may need to specify Python 3.10:
