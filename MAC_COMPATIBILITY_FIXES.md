@@ -30,6 +30,16 @@ This error occurs when using Gradio 5.15.0 with Pydantic 2.11+. The issue stems 
    - The patch adds a type check to handle boolean schema values
    - Applied automatically in `runShortGPT.py` before launching the Gradio interface
 
+3. **Improved Launch Configuration**
+   - Enhanced `gui/gui_gradio.py` with better error handling
+   - Added fallback server configuration (tries 0.0.0.0, then 127.0.0.1)
+   - Better error messages to help diagnose launch issues
+
+4. **Test Suite**
+   - Created `test_gradio_fix.py` to verify all fixes are working
+   - Validates Pydantic version, patch application, and Gradio functionality
+   - Provides clear pass/fail results and troubleshooting guidance
+
 ### 2. CheckboxGroup Value Type Error
 
 **Error Message:**
@@ -84,6 +94,23 @@ If you already have ShortGPT installed and are experiencing the Pydantic compati
    ```bash
    ./run_mac.sh
    ```
+
+## Testing the Fix
+
+A test script is included to verify all compatibility fixes are working:
+
+```bash
+source venv/bin/activate
+python test_gradio_fix.py
+```
+
+This script will:
+- ✅ Check Pydantic version compatibility
+- ✅ Test the Gradio compatibility patch
+- ✅ Verify Gradio can generate API info without errors
+- ✅ Test ShortGPT module imports
+
+If all tests pass, ShortGPT should launch successfully.
 
 ## Troubleshooting
 
